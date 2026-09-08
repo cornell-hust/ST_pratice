@@ -40,12 +40,23 @@ def test_scenarios(case,base_dt):
     assert b-a==timedelta(minutes=10)
     assert croniter('*/10 * * * *',base_dt).get_prev(datetime)<base_dt
 
-@pytest.mark.parametrize('case,expr',[(CASES[32],'5-5/0 * * * *'),(CASES[33],'0 0 * * 0'),(CASES[34],'0 0 1 */2 *'),(CASES[35],'0 0 * * *')])
+@pytest.mark.parametrize('case,expr',[(CASES[32],'5-5/0 * * * *'),(CASES[33],'0 0 1 */2 *'),(CASES[34],'0 0 * * 1-7/2'),(CASES[35],'0 0 * * *')])
 @pytest.mark.regression
 def test_regressions(case,expr):
+    start = datetime(2024, 1, 7, tzinfo=timezone.utc)
     if case['id']=='CRON-UT-033':
         with pytest.raises((CroniterBadCronError, ValueError)):
-            croniter(expr,datetime(2024,1,1,tzinfo=timezone.utc))
+            croniter(expr, start)
+    elif case['id'] == 'CRON-UT-034':
+        it = croniter(expr, datetime(2024, 2, 1, tzinfo=timezone.utc), expand_from_start_time=True)
+        actual = [it.get_next(datetime) for _ in range(4)]
+        expected = [datetime(2024, m, 1, tzinfo=timezone.utc) for m in (4, 6, 8, 10)]
+        assert actual == expected
+    elif case['id'] == 'CRON-UT-035':
+        it = croniter(expr, start, expand_from_start_time=True)
+        actual = [it.get_next(datetime) for _ in range(4)]
+        expected = [datetime(2024, 1, d, tzinfo=timezone.utc) for d in (9, 11, 13, 14)]
+        assert actual == expected
     else:
         it=croniter(expr,datetime(2024,1,1,tzinfo=timezone.utc),expand_from_start_time=True)
         assert it.get_next(datetime)
