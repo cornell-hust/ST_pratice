@@ -1,0 +1,146 @@
+[
+  {
+    "id": "CRON-UT-001",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-002",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-003",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-004",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-005",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-006",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-007",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-008",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-009",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-010",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-011",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-012",
+    "category": "equivalence"
+  },
+  {
+    "id": "CRON-UT-013",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-014",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-015",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-016",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-017",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-018",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-019",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-020",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-021",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-022",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-023",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-024",
+    "category": "boundary"
+  },
+  {
+    "id": "CRON-UT-025",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-026",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-027",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-028",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-029",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-030",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-031",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-032",
+    "category": "scenario"
+  },
+  {
+    "id": "CRON-UT-033",
+    "category": "regression"
+  },
+  {
+    "id": "CRON-UT-034",
+    "category": "regression"
+  },
+  {
+    "id": "CRON-UT-035",
+    "category": "regression"
+  },
+  {
+    "id": "CRON-UT-036",
+    "category": "regression"
+  }
+]
