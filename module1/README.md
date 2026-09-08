@@ -15,7 +15,7 @@ python -m coverage run --branch -m pytest
 python -m coverage report -m
 ```
 
-测试不得依赖网络、数据库或外部服务。若当前实现尚未完成，命令或统计结果以实际运行输出为准；报告中的最终数字使用 `TODO`/“待填”标记，不能根据计划值推算。
+测试不得依赖网络、数据库或外部服务。当前基线测试集已验证 41 条 pytest 用例通过；branch coverage 实测总覆盖率为 55%，低于原计划的 85% 目标。该数字仅反映当前测试集结果，后续扩充用例后需重新测量。
 
 ## 目录约定
 
@@ -66,4 +66,4 @@ python -m pytest -q -m regression
 - 模块一测试报告：`module1/reports/`
 - 需求—用例—实现—缺陷映射：`module1/requirements_traceability.md`
 
-完成测试后，请将 README 中的 `TODO`、附录表格和报告统计替换为实际结果，并保留运行命令和日期。
+报告和附录应保留实际运行命令、日期及覆盖率输出；当前已验证结果为 41 passed、branch coverage 55%。
