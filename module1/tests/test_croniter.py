@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime, timezone, timedelta
-from croniter import croniter, croniter_range
+from croniter import croniter, croniter_range, CroniterBadCronError
 import json
 from pathlib import Path
 CASES=json.loads((Path(__file__).parents[1]/"testdata/cron_cases.json").read_text())
@@ -13,7 +13,9 @@ def test_parser_equivalence(case,expr,valid):
     start=datetime(2024,1,1,tzinfo=timezone.utc)
     if valid: assert croniter(expr,start).get_next(datetime)
     else:
-        with pytest.raises(Exception): croniter(expr,**kwargs)
+        expected = CroniterBadCronError
+        with pytest.raises(expected):
+            croniter(expr, start)
 
 @pytest.mark.parametrize('case,expr,start,expected', [
  (CASES[12],'* * * * *',datetime(2024,1,1,0,0,tzinfo=timezone.utc),datetime(2024,1,1,0,1,tzinfo=timezone.utc)),
@@ -42,7 +44,8 @@ def test_scenarios(case,base_dt):
 @pytest.mark.regression
 def test_regressions(case,expr):
     if case['id']=='CRON-UT-033':
-        with pytest.raises(Exception): croniter(expr,datetime(2024,1,1,tzinfo=timezone.utc))
+        with pytest.raises((CroniterBadCronError, ValueError)):
+            croniter(expr,datetime(2024,1,1,tzinfo=timezone.utc))
     else:
         it=croniter(expr,datetime(2024,1,1,tzinfo=timezone.utc),expand_from_start_time=True)
         assert it.get_next(datetime)
