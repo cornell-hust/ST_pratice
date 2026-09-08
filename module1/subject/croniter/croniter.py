@@ -1048,6 +1048,10 @@ class croniter:
                             f" in field {field_index} is not acceptable"
                         )
                     step = int(step)
+                    if step == 0:
+                        raise CroniterBadCronError(
+                            f"[{expr_format}] step must be greater than zero"
+                        )
 
                     for band in low, high:
                         if not only_int_re.search(str(band)):
@@ -1271,9 +1275,9 @@ class croniter:
         if field_index == DAY_FIELD:
             return ((dt.day - 1) % step) + 1
         if field_index == MONTH_FIELD:
-            return dt.month % step
+            return dt.month % step or step
         if field_index == DOW_FIELD:
-            return (dt.weekday() + 1) % step
+            return dt.isoweekday() % 7 % step
 
         raise ValueError("Can't get current date number for index larger than 4")
 
