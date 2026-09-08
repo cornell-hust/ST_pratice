@@ -29,8 +29,8 @@
 | 缺陷 ID | 上游依据 | 基线复现 | 修复位置/提交 | 回归用例 | 状态 |
 |---|---|---|---|---|---|
 | CRON-D-001 | croniter 6.2.3 CHANGELOG / issue #232 | 已复现并回归 | `07dfad8` | CRON-UT-033 | 已修复 |
-| CRON-D-002 | croniter 6.2.3 CHANGELOG / issue #235 | 已复现并回归 | 源码修复 `07dfad8`；证据修订 `10e9bb6` | CRON-UT-033 | 已修复 |
-| CRON-D-003 | croniter 6.2.4 CHANGELOG / issue #239 | 已复现并回归 | 源码修复 `07dfad8`；证据提交 `101f39e` | CRON-UT-034 | 已修复 |
+| CRON-D-002 | croniter 6.2.3 CHANGELOG / issue #235 | 已复现并回归 | 源码修复 `07dfad8`；证据修订 `10e9bb6` | CRON-UT-034 | 已修复 |
+| CRON-D-003 | croniter 6.2.4 CHANGELOG / issue #239 | 已复现并回归 | 源码修复 `07dfad8`；证据提交 `101f39e` | CRON-UT-035 | 已修复 |
 
 ## 执行记录
 
