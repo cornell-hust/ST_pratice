@@ -56,3 +56,27 @@ def test_match_and_range():
     assert not croniter.match('0 0 * * *',dt+timedelta(minutes=1))
     vals=list(croniter_range(dt,dt+timedelta(minutes=3),'* * * * *'))
     assert len(vals)==4
+
+def test_match_range_and_is_valid():
+    dt=datetime(2024,1,1,tzinfo=timezone.utc)
+    assert croniter.is_valid('0 0 * * *')
+    assert not croniter.is_valid('not cron')
+    assert croniter.match_range('0 0 * * *', dt, dt+timedelta(days=1))
+    assert not croniter.match_range('0 1 * * *', dt, dt+timedelta(minutes=30))
+
+def test_return_types_seconds_and_year():
+    dt=datetime(2024,1,1,tzinfo=timezone.utc)
+    assert isinstance(croniter('*/30 * * * * *',dt).get_next(), float)
+    assert croniter.is_valid('0 0 0 1 1 *', second_at_beginning=True)
+
+def test_timezone_dst_zoneinfo():
+    from zoneinfo import ZoneInfo
+    tz=ZoneInfo('America/New_York')
+    start=datetime(2024,3,9,0,0,tzinfo=tz)
+    nxt=croniter('0 2 * * *',start).get_next(datetime)
+    assert nxt.tzinfo == tz
+    assert nxt.day in (9, 10)
+
+def test_exception_inputs():
+    with pytest.raises((TypeError, ValueError)): croniter('* * * * *', object()).get_next()
+    with pytest.raises(CroniterBadCronError): croniter('0 0 32 * *', datetime.now(timezone.utc))
