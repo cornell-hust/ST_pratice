@@ -1,3 +1,3 @@
 0 0 * * 5-5/0 CroniterBadCronError [0 0 * * 5-5/0] step must be greater than zero
-0 0 1 */2 * [datetime.datetime(2024, 3, 1, 0, 0), datetime.datetime(2024, 5, 1, 0, 0), datetime.datetime(2024, 7, 1, 0, 0), datetime.datetime(2024, 9, 1, 0, 0)]
+0 0 1 */2 * [datetime.datetime(2024, 4, 1, 0, 0), datetime.datetime(2024, 6, 1, 0, 0), datetime.datetime(2024, 8, 1, 0, 0), datetime.datetime(2024, 10, 1, 0, 0)]
 0 0 * * 1-7/2 [datetime.datetime(2024, 1, 9, 0, 0), datetime.datetime(2024, 1, 11, 0, 0), datetime.datetime(2024, 1, 13, 0, 0), datetime.datetime(2024, 1, 14, 0, 0)]
