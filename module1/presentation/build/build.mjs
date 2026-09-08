@@ -1,0 +1,20 @@
+import fs from 'node:fs/promises'; import path from 'node:path'; import {pathToFileURL} from 'node:url';
+const SKILL_DIR='/Users/cornell/.codex/plugins/cache/openai-primary-runtime/presentations/26.905.11957/skills/presentations'; const TMP_DIR=path.resolve('module1/presentation/build');
+const {resolvePresentationFont, finalizePresentation}=await import(pathToFileURL(path.join(SKILL_DIR,'container_tools/artifact_tool_utils.mjs')).href); const {Presentation,PresentationFile}=await import('@oai/artifact-tool');
+const fam=resolvePresentationFont(); const p=Presentation.create({slideSize:{width:1280,height:720}}); const navy='#102A43', teal='#0B7285', orange='#E67700', light='#F4F7FA';
+const slides=[
+['模块一：测试基础实践','croniter 6.2.2 · 课程成果汇报','41 passed · 36 条测试用例 · 3 个公开历史缺陷'],
+['被测对象：croniter','Python cron 表达式迭代库','核心接口：croniter()、get_next()、get_prev()、match_range()、croniter_range()\n基线：上游 6.2.2；缺陷修复在本地分支完成'],
+['风险地图','时间表达式的错误会直接改变任务触发时刻','解析输入：字段数量、范围、步长、非法值\n时间边界：月末、闰年、跨年、星期日\n状态行为：连续 next/prev、区间枚举、时区感知 datetime'],
+['测试策略','用例设计覆盖输入类别与时间边界','等价类：12 条\n边界值：12 条\n场景与状态转换：8 条\n异常与回归：4 条\n共 36 条，自动化执行比例超过 80%'],
+['自动化执行路径','一条命令把清单变成可重复证据','pytest 参数化数据驱动\nfixture 统一时间与时区\nsmoke / boundary / regression 标记\n运行：python -m pytest -q'],
+['用例清单结构','每条用例都能追溯到函数和结果','编号 CRON-UT-001～036\n字段包含：输入、步骤、预期、实际、状态、设计方法\n测试数据保存在 testdata/cron_cases.json\n清单模板：附录1-测试用例清单.xlsx'],
+['缺陷复现：零步长范围','基线版本接受了不应接受的步长输入','表达式：5-5/0\n基线 6.2.2：行为异常，未稳定拒绝\n修复：07dfad8 增加步长校验\n回归：零步长稳定抛出异常，合法步长继续通过'],
+['缺陷闭环：月份与 Sunday 边界','公开记录提供证据，本地回归证明修复有效','月份边界：issue #235，对应修复 101f39e\nSunday 步进：issue #239，对应修复 10e9bb6\n分别覆盖 1 月、12 月、跨年和 Saturday→Sunday'],
+['执行结果','测试通过，覆盖率用于定位后续风险','41 passed\n覆盖率：55%（当前结果，如实记录）\n三项历史缺陷均完成复现、修复和回归\n未把覆盖率当作质量结论，后续补充未覆盖分支'],
+['现场演示流程','从安装到回归，展示证据链','1 进入 module1 并安装依赖\n2 运行 pytest，展示 41 passed\n3 切换基线复现缺陷\n4 应用修复提交并运行回归\n5 打开 Excel、缺陷报告和测试报告'],
+['结论与交付物','模块一形成可复现、可追溯的测试实践','36 条清单与自动化脚本\n3 个公开历史缺陷的复现、修复、回归证据\n附录1、附录2、附录3 与 README\n演示入口：module1/presentation/演示视频脚本.md']
+];
+for(let i=0;i<slides.length;i++){const s=p.slides.add(); s.background.fill=i===0?navy:'#FFFFFF'; const [t,sub,body]=slides[i]; const title=s.shapes.add({geometry:'textbox',position:{left:72,top:50,width:1136,height:70},fill:'none',line:{fill:'none',width:0}}); title.text=t; title.text.style={typeface:fam,fontSize: i===0?42:34,bold:true,color:i===0?'#FFFFFF':navy}; const st=s.shapes.add({geometry:'textbox',position:{left:76,top:140,width:1120,height:55},fill:'none',line:{fill:'none',width:0}}); st.text=sub; st.text.style={typeface:fam,fontSize:24,bold:true,color:i===0?'#BEE3F8':teal}; const b=s.shapes.add({geometry:'textbox',position:{left:100,top:245,width:1050,height:300},fill:'none',line:{fill:'none',width:0}}); b.text=body; b.text.style={typeface:fam,fontSize: i===0?24:28,color:i===0?'#FFFFFF':'#243B53',breakLine:true}; const f=s.shapes.add({geometry:'textbox',position:{left:1100,top:670,width:100,height:25},fill:'none',line:{fill:'none',width:0}}); f.text=String(i+1).padStart(2,'0'); f.text.style={typeface:fam,fontSize:16,color:i===0?'#BEE3F8':'#829AB1'}; s.speakerNotes.textFrame.setText('事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。');}
+await fs.mkdir(TMP_DIR,{recursive:true}); const cand=path.join(TMP_DIR,'candidate.pptx'); await (await PresentationFile.exportPptx(p)).save(cand); const out=path.resolve('module1/presentation/output/模块一成果汇报.pptx'); await finalizePresentation({workspaceDir:path.resolve('.'),candidatePath:cand,finalPath:out,pythonExecutable:'/Users/cornell/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3',integrityValidatorPath:path.join(SKILL_DIR,'container_tools/inspect_presentation_package_integrity.py'),layoutValidatorPath:path.join(SKILL_DIR,'container_tools/inspect_presentation_layout_geometry.py'),layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-heading-fit'],fontPolicy:{basis:'design',families:[fam]},verifyArtifactToolImport:true,receiptPath:path.join(TMP_DIR,'validation.json'),explicitTotalSlideCount:11});
+

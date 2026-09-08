@@ -1,0 +1,69 @@
+{"kind":"deck","id":"pr/u6p9vx","name":"Deck"}
+{"kind":"layout","layoutId":"ceb099f9-4bd3-4032-8264-182b66007c2e","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"b15df280-dff6-4e67-98a9-ba4a2cc6fe05","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/bx6iyw","slide":1,"title":"模块一：测试基础实践","textShapes":4}
+{"kind":"textbox","id":"sh/bat0v250","slide":1,"text":"模块一：测试基础实践","textPreview":"模块一：测试基础实践","textChars":10,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/cbm1o76l","slide":1,"text":"croniter 6.2.2 · 课程成果汇报","textPreview":"croniter 6.2.2 · 课程成果汇报","textChars":23,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/dwvixcnq","slide":1,"text":"41 passed · 36 条测试用例 · 3 个公开历史缺陷","textPreview":"41 passed · 36 条测试用例 · 3 个公开历史缺陷","textChars":32,"textLines":1,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/yx4jqh4b","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/bx6iyw","slide":1,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/dcrhm7","slide":2,"title":"被测对象：croniter","textShapes":4}
+{"kind":"textbox","id":"sh/ra9wv6d8","slide":2,"text":"被测对象：croniter","textPreview":"被测对象：croniter","textChars":13,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/cbixobet","slide":2,"text":"Python cron 表达式迭代库","textPreview":"Python cron 表达式迭代库","textChars":18,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/dcrexwve","slide":2,"text":"核心接口：croniter()、get_next()、get_prev()、match_range()、croniter_range()\n基线：上游 6.2.2；缺陷修复在本地分支完成","textPreview":"核心接口：croniter()、get_next()、get_prev()、match_range()、croniter_range() | 基线：上游 6.2.2；缺陷修复在本地分支完成","textChars":92,"textLines":2,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/2lgfihwr","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/dcrhm7","slide":2,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/u6x73o","slide":3,"title":"风险地图","textShapes":4}
+{"kind":"textbox","id":"sh/m9krip0j","slide":3,"text":"风险地图","textPreview":"风险地图","textChars":4,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/9wbqt4za","slide":3,"text":"时间表达式的错误会直接改变任务触发时刻","textPreview":"时间表达式的错误会直接改变任务触发时刻","textChars":19,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/8v29kzip","slide":3,"text":"解析输入：字段数量、范围、步长、非法值\n时间边界：月末、闰年、跨年、星期日\n状态行为：连续 next/prev、区间枚举、时区感知 datetime","textPreview":"解析输入：字段数量、范围、步长、非法值 | 时间边界：月末、闰年、跨年、星期日 | 状态行为：连续 next/prev、区间枚举、时区感知 datetime","textChars":74,"textLines":3,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/z6t8na18","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/u6x73o","slide":3,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/bc9o52","slide":4,"title":"测试策略","textShapes":4}
+{"kind":"textbox","id":"sh/yhsfidgf","slide":4,"text":"测试策略","textPreview":"测试策略","textChars":4,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/lk3ed8z6","slide":4,"text":"用例设计覆盖输入类别与时间边界","textPreview":"用例设计覆盖输入类别与时间边界","textChars":15,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/0juxknyl","slide":4,"text":"等价类：12 条\n边界值：12 条\n场景与状态转换：8 条\n异常与回归：4 条\n共 36 条，自动化执行比例超过 80%","textPreview":"等价类：12 条 | 边界值：12 条 | 场景与状态转换：8 条 | 异常与回归：4 条 | 共 36 条，自动化执行比例超过 80%","textChars":60,"textLines":5,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/be1w7yh4","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/bc9o52","slide":4,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/e48pcd","slide":5,"title":"自动化执行路径","textShapes":4}
+{"kind":"textbox","id":"sh/snap4fat","slide":5,"text":"自动化执行路径","textPreview":"自动化执行路径","textChars":7,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/rm1oba98","slide":5,"text":"一条命令把清单变成可重复证据","textPreview":"一条命令把清单变成可重复证据","textChars":14,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/qls725sn","slide":5,"text":"pytest 参数化数据驱动\nfixture 统一时间与时区\nsmoke / boundary / regression 标记\n运行：python -m pytest -q","textPreview":"pytest 参数化数据驱动 | fixture 统一时间与时区 | smoke / boundary / regression 标记 | 运行：python -m pytest -q","textChars":86,"textLines":4,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/1sj6h4ra","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/e48pcd","slide":5,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/ojjc1u","slide":6,"title":"用例清单结构","textShapes":4}
+{"kind":"textbox","id":"sh/2x0r69w3","slide":6,"text":"用例清单结构","textPreview":"用例清单结构","textChars":6,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/pkba1ove","slide":6,"text":"每条用例都能追溯到函数和结果","textPreview":"每条用例都能追溯到函数和结果","textChars":14,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/oj298je9","slide":6,"text":"编号 CRON-UT-001～036\n字段包含：输入、步骤、预期、实际、状态、设计方法\n测试数据保存在 testdata/cron_cases.json\n清单模板：附录1-测试用例清单.xlsx","textPreview":"编号 CRON-UT-001～036 | 字段包含：输入、步骤、预期、实际、状态、设计方法 | 测试数据保存在 testdata/cron_cases.json | 清单模板：附录1-测试用例清单.xlsx","textChars":97,"textLines":4,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/fu9svudc","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/ojjc1u","slide":6,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/sjydj0","slide":7,"title":"缺陷复现：零步长范围","textShapes":4}
+{"kind":"textbox","id":"sh/0fedk72x","slide":7,"text":"缺陷复现：零步长范围","textPreview":"缺陷复现：零步长范围","textChars":10,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/ze5wb2lc","slide":7,"text":"基线版本接受了不应接受的步长输入","textPreview":"基线版本接受了不应接受的步长输入","textChars":16,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/ydwvixkr","slide":7,"text":"表达式：5-5/0\n基线 6.2.2：行为异常，未稳定拒绝\n修复：07dfad8 增加步长校验\n回归：零步长稳定抛出异常，合法步长继续通过","textPreview":"表达式：5-5/0 | 基线 6.2.2：行为异常，未稳定拒绝 | 修复：07dfad8 增加步长校验 | 回归：零步长稳定抛出异常，合法步长继续通过","textChars":69,"textLines":4,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/947ehc3e","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/sjydj0","slide":7,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/x73dxw","slide":8,"title":"缺陷闭环：月份与 Sunday 边界","textShapes":4}
+{"kind":"textbox","id":"sh/jytcb6xk","slide":8,"text":"缺陷闭环：月份与 Sunday 边界","textPreview":"缺陷闭环：月份与 Sunday 边界","textChars":18,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/kz2tkbe5","slide":8,"text":"公开记录提供证据，本地回归证明修复有效","textPreview":"公开记录提供证据，本地回归证明修复有效","textChars":19,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/50budgfq","slide":8,"text":"月份边界：issue #235，对应修复 101f39e\nSunday 步进：issue #239，对应修复 10e9bb6\n分别覆盖 1 月、12 月、跨年和 Saturday→Sunday","textPreview":"月份边界：issue #235，对应修复 101f39e | Sunday 步进：issue #239，对应修复 10e9bb6 | 分别覆盖 1 月、12 月、跨年和 Saturday→Sunday","textChars":96,"textLines":3,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/a90be1g3","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/x73dxw","slide":8,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/scmfis","slide":9,"title":"执行结果","textShapes":4}
+{"kind":"textbox","id":"sh/147y9gzq","slide":9,"text":"执行结果","textPreview":"执行结果","textChars":4,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/e1wfe1gz","slide":9,"text":"测试通过，覆盖率用于定位后续风险","textPreview":"测试通过，覆盖率用于定位后续风险","textChars":16,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/f2pg76hk","slide":9,"text":"41 passed\n覆盖率：55%（当前结果，如实记录）\n三项历史缺陷均完成复现、修复和回归\n未把覆盖率当作质量结论，后续补充未覆盖分支","textPreview":"41 passed | 覆盖率：55%（当前结果，如实记录） | 三项历史缺陷均完成复现、修复和回归 | 未把覆盖率当作质量结论，后续补充未覆盖分支","textChars":68,"textLines":4,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/o7yhkby1","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/scmfis","slide":9,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/kpmkx3","slide":10,"title":"现场演示流程","textShapes":4}
+{"kind":"textbox","id":"sh/8fe5gbyl","slide":10,"text":"现场演示流程","textPreview":"现场演示流程","textChars":6,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/7e5on6h0","slide":10,"text":"从安装到回归，展示证据链","textPreview":"从安装到回归，展示证据链","textChars":12,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/6dwne1gf","slide":10,"text":"1 进入 module1 并安装依赖\n2 运行 pytest，展示 41 passed\n3 切换基线复现缺陷\n4 应用修复提交并运行回归\n5 打开 Excel、缺陷报告和测试报告","textPreview":"1 进入 module1 并安装依赖 | 2 运行 pytest，展示 41 passed | 3 切换基线复现缺陷 | 4 应用修复提交并运行回归 | 5 打开 Excel、缺陷报告和测试报告","textChars":89,"textLines":5,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/h476tgf2","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/kpmkx3","slide":10,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
+{"kind":"slide","id":"sl/81aej7","slide":11,"title":"结论与交付物","textShapes":4}
+{"kind":"textbox","id":"sh/c3ml4j29","slide":11,"text":"结论与交付物","textPreview":"结论与交付物","textChars":6,"textLines":1,"bbox":[72,50,1136,70]}
+{"kind":"textbox","id":"sh/b2t4vel4","slide":11,"text":"模块一形成可复现、可追溯的测试实践","textPreview":"模块一形成可复现、可追溯的测试实践","textChars":17,"textLines":1,"bbox":[76,140,1120,55]}
+{"kind":"textbox","id":"sh/a1k329kj","slide":11,"text":"36 条清单与自动化脚本\n3 个公开历史缺陷的复现、修复、回归证据\n附录1、附录2、附录3 与 README\n演示入口：module1/presentation/演示视频脚本.md","textPreview":"36 条清单与自动化脚本 | 3 个公开历史缺陷的复现、修复、回归证据 | 附录1、附录2、附录3 与 README | 演示入口：module1/presentation/演示视频脚本.md","textChars":90,"textLines":4,"bbox":[100,245,1050,300]}
+{"kind":"textbox","id":"sh/p0b2t43y","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1100,670,100,25]}
+{"kind":"notes","id":"nt/81aej7","slide":11,"text":"事实来源：module1/README.md、module1/defects/repro-baseline.txt、module1/defects/repro-fixed.txt、module1/reports/附录3-测试报告-模块一.docx。"}
