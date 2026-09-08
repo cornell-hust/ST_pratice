@@ -1,2 +1,3 @@
 pytest
 coverage
+python-dateutil>=2.8
