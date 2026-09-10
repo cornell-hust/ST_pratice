@@ -15,7 +15,7 @@
 |---|---|---|
 | CRON-UT-001—012 | `test_parser_equivalence` | 等价类、异常 |
 | CRON-UT-013—024 | `test_next_boundaries` | 边界值 |
-| CRON-UT-025—032 | `test_scenarios` | 场景法、状态转换 |
+| CRON-UT-025（原 025—032 为重复用例已去重） | `test_scenarios` | 场景法、状态转换 |
 | CRON-UT-033—036 | `test_regressions` | 回归（带 `@pytest.mark.regression`） |
 
 标记（`smoke`、`boundary`、`regression`、`scenario`）定义于 `module1/pytest.ini`。
@@ -31,7 +31,7 @@
 .venv/Scripts/python.exe -m coverage report -m
 ```
 
-当前基线结果：41 passed；branch coverage 55%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
+当前结果：34 passed；branch coverage 56%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
 
 ## 新增用例的步骤
 
