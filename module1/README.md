@@ -15,7 +15,7 @@ python -m coverage run --branch -m pytest
 python -m coverage report -m
 ```
 
-测试不得依赖网络、数据库或外部服务。当前测试集已验证 37 条 pytest 用例通过；branch coverage 实测总覆盖率为 55%，低于原计划的 85% 目标。该数字仅反映当前测试集结果，后续扩充用例后需重新测量。
+测试不得依赖网络、数据库或外部服务。当前测试集已验证 37 条 pytest 用例通过；branch coverage 实测总覆盖率为 56%，低于原计划的 85% 目标。该数字仅反映当前测试集结果，后续扩充用例后需重新测量。
 
 ## 目录约定
 
@@ -66,4 +66,4 @@ python -m pytest -q
 - 模块一测试报告：`module1/reports/`
 - 需求—用例—实现—缺陷映射：`module1/requirements_traceability.md`
 
-报告和附录应保留实际运行命令、日期及覆盖率输出；当前已验证结果为 37 passed（另有 1 skipped）、branch coverage 55%。
+报告和附录应保留实际运行命令、日期及覆盖率输出；当前已验证结果为 37 passed、branch coverage 56%。

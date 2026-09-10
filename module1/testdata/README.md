@@ -7,14 +7,12 @@
 | 字段 | 含义 | 出现条件 |
 |---|---|---|
 | `id` | 用例编号 `CRON-UT-XXX` | 全部 |
-| `category` | `equivalence` / `boundary` / `scenario`（当前账本无 regression 类） | 全部 |
+| `category` | `equivalence` / `boundary` / `scenario` | 全部 |
 | `expr` | cron 表达式 | 全部 |
 | `valid` | `true`=合法表达式应通过；`false`=应抛 `CroniterBadCronError` | equivalence |
 | `start` | 起始时间（ISO 8601） | boundary / scenario |
 | `expected` | 单次 `get_next` 的预期时间 | boundary |
-| `expect` | `"raise"` 或 `"sequence"` | regression（当前账本无该类用例，字段暂不出现） |
-| `n` | 取前 n 次结果 | sequence 类（仅 regression） |
-| `expected`（数组） | 完整预期序列 | sequence 类（仅 regression） |
+| `expand` | `true` 时按起点展开步进（`expand_from_start_time=True`），用于在基线版本上暴露月份/周日低界缺陷 | boundary（当前仅 034/035 使用） |
 
 ## 修改规则
 

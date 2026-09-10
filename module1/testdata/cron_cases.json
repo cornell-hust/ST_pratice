@@ -1,146 +1,34 @@
 [
-  {
-    "id": "CRON-UT-001",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-002",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-003",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-004",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-005",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-006",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-007",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-008",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-009",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-010",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-011",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-012",
-    "category": "equivalence"
-  },
-  {
-    "id": "CRON-UT-013",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-014",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-015",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-016",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-017",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-018",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-019",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-020",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-021",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-022",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-023",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-024",
-    "category": "boundary"
-  },
-  {
-    "id": "CRON-UT-025",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-026",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-027",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-028",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-029",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-030",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-031",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-032",
-    "category": "scenario"
-  },
-  {
-    "id": "CRON-UT-033",
-    "category": "regression"
-  },
-  {
-    "id": "CRON-UT-034",
-    "category": "regression"
-  },
-  {
-    "id": "CRON-UT-035",
-    "category": "regression"
-  },
-  {
-    "id": "CRON-UT-036",
-    "category": "regression"
-  }
+{"id": "CRON-UT-001", "category": "equivalence", "expr": "* * * * *", "valid": true},
+{"id": "CRON-UT-002", "category": "equivalence", "expr": "*/5 * * * *", "valid": true},
+{"id": "CRON-UT-003", "category": "equivalence", "expr": "0 0 * * *", "valid": true},
+{"id": "CRON-UT-004", "category": "equivalence", "expr": "1-5 * * * *", "valid": true},
+{"id": "CRON-UT-005", "category": "equivalence", "expr": "1,15,30 * * * *", "valid": true},
+{"id": "CRON-UT-006", "category": "equivalence", "expr": "0 9-17 * * 1-5", "valid": true},
+{"id": "CRON-UT-007", "category": "equivalence", "expr": "@daily", "valid": true},
+{"id": "CRON-UT-008", "category": "equivalence", "expr": "0 0 1 1 *", "valid": true},
+{"id": "CRON-UT-009", "category": "equivalence", "expr": "bad expr", "valid": false},
+{"id": "CRON-UT-010", "category": "equivalence", "expr": "* * * *", "valid": false},
+{"id": "CRON-UT-011", "category": "equivalence", "expr": "60 * * * *", "valid": false},
+{"id": "CRON-UT-012", "category": "equivalence", "expr": "*/0 * * * *", "valid": false},
+{"id": "CRON-UT-033", "category": "equivalence", "expr": "0 0 * * 5-5/0", "valid": false},
+{"id": "CRON-UT-013", "category": "boundary", "expr": "* * * * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-01T00:01:00+00:00"},
+{"id": "CRON-UT-014", "category": "boundary", "expr": "0 * * * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-01T01:00:00+00:00"},
+{"id": "CRON-UT-015", "category": "boundary", "expr": "0 0 1 * *", "start": "2024-01-02T00:00:00+00:00", "expected": "2024-02-01T00:00:00+00:00"},
+{"id": "CRON-UT-016", "category": "boundary", "expr": "0 0 29 2 *", "start": "2023-01-01T00:00:00+00:00", "expected": "2024-02-29T00:00:00+00:00"},
+{"id": "CRON-UT-017", "category": "boundary", "expr": "59 23 31 12 *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-12-31T23:59:00+00:00"},
+{"id": "CRON-UT-018", "category": "boundary", "expr": "0 0 * * 0", "start": "2024-01-06T00:00:00+00:00", "expected": "2024-01-07T00:00:00+00:00"},
+{"id": "CRON-UT-019", "category": "boundary", "expr": "0 0 1 1 *", "start": "2024-01-02T00:00:00+00:00", "expected": "2025-01-01T00:00:00+00:00"},
+{"id": "CRON-UT-020", "category": "boundary", "expr": "*/15 * * * *", "start": "2024-01-01T00:01:00+00:00", "expected": "2024-01-01T00:15:00+00:00"},
+{"id": "CRON-UT-021", "category": "boundary", "expr": "0 0 1 * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-02-01T00:00:00+00:00"},
+{"id": "CRON-UT-022", "category": "boundary", "expr": "0 0 * * 6", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-06T00:00:00+00:00"},
+{"id": "CRON-UT-023", "category": "boundary", "expr": "0 12 * * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-01T12:00:00+00:00"},
+{"id": "CRON-UT-024", "category": "boundary", "expr": "0 0 1 1 *", "start": "2023-12-31T00:00:00+00:00", "expected": "2024-01-01T00:00:00+00:00"},
+{"id": "CRON-UT-034", "category": "boundary", "expr": "0 0 1 */2 *", "start": "2024-02-01T00:00:00+00:00", "expand": true, "expected": "2024-04-01T00:00:00+00:00"},
+{"id": "CRON-UT-035", "category": "boundary", "expr": "0 0 * * 1-7/2", "start": "2024-01-07T00:00:00+00:00", "expand": true, "expected": "2024-01-09T00:00:00+00:00"},
+{"id": "CRON-UT-025", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-01-15T12:00:00+00:00"},
+{"id": "CRON-UT-037", "category": "scenario", "expr": "5-59/10 * * * *", "start": "2024-01-15T12:00:00+00:00"},
+{"id": "CRON-UT-038", "category": "scenario", "expr": "0,10,20,30,40,50 * * * *", "start": "2024-01-15T12:00:00+00:00"},
+{"id": "CRON-UT-039", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-06-30T23:50:00+00:00"},
+{"id": "CRON-UT-040", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-08-01T00:05:00+09:00"}
 ]
