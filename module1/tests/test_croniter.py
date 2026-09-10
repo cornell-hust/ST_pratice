@@ -23,6 +23,7 @@ def _cases(category):
 EQUIVALENCE = _cases("equivalence")   # 12 条：合法/非法表达式等价类
 BOUNDARY = _cases("boundary")         # 12 条：分钟/小时/日期/闰年/周日等边界值
 SCENARIO = _cases("scenario")         # 5 条：连续迭代场景
+MATCH = _cases("match")               # 6 条：匹配/范围/合法性专项检查（原独立测试函数并入）
 
 
 @pytest.mark.parametrize("case", EQUIVALENCE, ids=[c["id"] for c in EQUIVALENCE])
@@ -37,7 +38,17 @@ def test_parser_equivalence(case):
 
 @pytest.mark.parametrize("case", BOUNDARY, ids=[c["id"] for c in BOUNDARY])
 def test_next_boundaries(case):
+    if case.get("start") == "object":                  # 异常输入：非法起始类型
+        with pytest.raises((TypeError, ValueError)):
+            croniter(case["expr"], object()).get_next()
+        return
     start = _dt(case["start"])                         # 起始时间来自账本
+    if case.get("tz"):                                 # ZoneInfo 时区（夏令时边界）
+        from zoneinfo import ZoneInfo
+        start = start.replace(tzinfo=ZoneInfo(case["tz"]))
+    if case.get("ret_type") == "float":                # 默认返回类型：秒级时间戳
+        assert isinstance(croniter(case["expr"], start).get_next(), float)
+        return
     expected = _dt(case["expected"])                   # 预期结果来自账本
     # 034/035 等月份/周日低界用例需按起点展开步进，才能在修复前基线版本上暴露对应历史缺陷
     expand = case.get("expand", False)
@@ -53,39 +64,14 @@ def test_scenarios(case):
     assert croniter(case["expr"], start).get_prev(datetime) < start  # 往回找必须早于起点
 
 
-def test_match_and_range():
-    dt = datetime(2024, 1, 1, tzinfo=timezone.utc)
-    assert croniter.match('0 0 * * *', dt)
-    assert not croniter.match('0 0 * * *', dt + timedelta(minutes=1))
-    vals = list(croniter_range(dt, dt + timedelta(minutes=3), '* * * * *'))
-    assert len(vals) == 4
-
-
-def test_match_range_and_is_valid():
-    dt = datetime(2024, 1, 1, tzinfo=timezone.utc)
-    assert croniter.is_valid('0 0 * * *')
-    assert not croniter.is_valid('not cron')
-    assert croniter.match_range('0 0 * * *', dt, dt + timedelta(days=1))
-    assert not croniter.match_range('0 1 * * *', dt, dt + timedelta(minutes=30))
-
-
-def test_return_types_seconds_and_year():
-    dt = datetime(2024, 1, 1, tzinfo=timezone.utc)
-    assert isinstance(croniter('*/30 * * * * *', dt).get_next(), float)
-    assert croniter.is_valid('0 0 0 1 1 *', second_at_beginning=True)
-
-
-def test_timezone_dst_zoneinfo():
-    from zoneinfo import ZoneInfo
-    tz = ZoneInfo('America/New_York')
-    start = datetime(2024, 3, 9, 0, 0, tzinfo=tz)
-    nxt = croniter('0 2 * * *', start).get_next(datetime)
-    assert nxt.tzinfo == tz
-    assert nxt.day in (9, 10)
-
-
-def test_exception_inputs():
-    with pytest.raises((TypeError, ValueError)):
-        croniter('* * * * *', object()).get_next()
-    with pytest.raises(CroniterBadCronError):
-        croniter('0 0 32 * *', datetime.now(timezone.utc))
+@pytest.mark.parametrize("case", MATCH, ids=[c["id"] for c in MATCH])
+def test_match_and_ranges(case):
+    """匹配/范围/合法性专项检查（原 5 个独立测试函数已并入账本参数化）"""
+    if case["check"] == "match":                      # 时刻匹配
+        assert croniter.match(case["expr"], _dt(case["start"])) == case["expected"]
+    elif case["check"] == "match_range":              # 时段匹配
+        assert croniter.match_range(case["expr"], _dt(case["start"]), _dt(case["end"])) == case["expected"]
+    elif case["check"] == "range":                    # 窗口内触发点个数
+        assert len(list(croniter_range(_dt(case["start"]), _dt(case["end"]), case["expr"]))) == case["count"]
+    else:                                             # is_valid 合法性校验
+        assert croniter.is_valid(case["expr"], second_at_beginning=case.get("second_at_beginning", False)) == case["expected"]

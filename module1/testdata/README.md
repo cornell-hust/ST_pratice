@@ -1,18 +1,24 @@
 # testdata/ — 测试数据账本
 
-`cron_cases.json` 是 32 条清单用例（CRON-UT-001—025、033—035、037—040；026—032 重复用例已去重、036 已删除）的**单一数据源**：用例的表达式、起始时间与预期结果全部记录在此，测试代码不写死任何用例数据（"数据带着代码"，设计动机见 `module1/自动化测试设计与实施说明v2.md`）。
+`cron_cases.json` 是 41 条清单用例（CRON-UT-001—011、013—025、033—035、037—050；012 已删除、026—032 重复用例已去重、036 已删除，原 5 条专项自动化检查已并入为 041—050）的**单一数据源**：用例的表达式、起始时间与预期结果全部记录在此，测试代码不写死任何用例数据（"数据带着代码"，设计动机见 `module1/自动化测试设计与实施说明v2.md`）。
 
 ## 字段说明
 
 | 字段 | 含义 | 出现条件 |
 |---|---|---|
 | `id` | 用例编号 `CRON-UT-XXX` | 全部 |
-| `category` | `equivalence` / `boundary` / `scenario` | 全部 |
+| `category` | `equivalence` / `boundary` / `scenario` / `match` | 全部 |
 | `expr` | cron 表达式 | 全部 |
 | `valid` | `true`=合法表达式应通过；`false`=应抛 `CroniterBadCronError` | equivalence |
-| `start` | 起始时间（ISO 8601） | boundary / scenario |
-| `expected` | 单次 `get_next` 的预期时间 | boundary |
+| `start` | 起始时间（ISO 8601）；`"object"` 表示非法起始类型（应抛 TypeError/ValueError） | boundary / scenario / match（is_valid 除外） |
+| `expected` | 单次 `get_next` 的预期时间；match 类为布尔判定结果 | boundary / match |
 | `expand` | `true` 时按起点展开步进（`expand_from_start_time=True`），用于在基线版本上暴露月份/周日低界缺陷 | boundary（当前仅 034/035 使用） |
+| `ret_type` | `"float"`：断言默认返回类型为秒级时间戳 | boundary（仅 042 使用） |
+| `tz` | ZoneInfo 时区名（如 `America/New_York`），覆盖 start 的固定偏移 | boundary（仅 043 使用） |
+| `check` | `match` / `match_range` / `range` / `is_valid`：专项检查类型 | match |
+| `end` | 时段/窗口结束时间（ISO 8601） | match（match_range、range） |
+| `count` | 窗口内触发点个数 | match（range） |
+| `second_at_beginning` | `true` 时 is_valid 按秒在前解析 6 段表达式 | match（is_valid，仅 049 使用） |
 
 ## 修改规则
 

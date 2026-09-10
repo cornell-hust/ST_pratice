@@ -7,15 +7,16 @@
 | 文件 | 作用 |
 |---|---|
 | `conftest.py` | 路径注入；不定义公共 fixture（用例数据由 testdata 账本提供） |
-| `test_croniter.py` | 参数化用例 + 5 条专项自动化检查 |
+| `test_croniter.py` | 41 条账本参数化用例（原 5 条专项自动化检查已并入账本） |
 
 ## 用例段与测试函数映射
 
 | 用例编号 | 测试函数 | 方法 |
 |---|---|---|
-| CRON-UT-001—012、033 | `test_parser_equivalence` | 等价类、异常 |
-| CRON-UT-013—024、034、035 | `test_next_boundaries` | 边界值（034/035 带 `expand_from_start_time=True`，用于在基线上暴露历史缺陷） |
+| CRON-UT-001—011、033、041 | `test_parser_equivalence` | 等价类、异常 |
+| CRON-UT-013—024、034、035、042—044 | `test_next_boundaries` | 边界值（034/035 带 `expand_from_start_time=True` 用于在基线上暴露历史缺陷；042 返回值类型、043 夏令时、044 非法输入类型） |
 | CRON-UT-025、037—040 | `test_scenarios` | 场景法、状态转换 |
+| CRON-UT-045—050 | `test_match_and_ranges` | match / match_range / croniter_range / is_valid 专项校验（原 5 个独立测试函数已并入账本） |
 
 标记（`smoke`、`boundary`、`regression`、`scenario`）定义于 `module1/pytest.ini`。
 
@@ -29,7 +30,7 @@
 .venv/Scripts/python.exe -m coverage report -m
 ```
 
-当前结果：37 passed；branch coverage 56%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
+当前结果：41 passed；branch coverage 55%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
 
 ## 新增用例的步骤
 
