@@ -1,0 +1,21 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Office 临时锁文件
+~$*
+
+# Node 依赖（presentation 构建用）
+# 注意：module1/presentation/build/node_modules 已被 git 跟踪，
+# 忽略规则对已跟踪文件不生效，取消跟踪需小组确认后执行
+# git rm -r --cached module1/presentation/build/node_modules
+node_modules/
