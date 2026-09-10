@@ -12,6 +12,11 @@
 {"id": "CRON-UT-011", "category": "equivalence", "expr": "60 * * * *", "valid": false},
 {"id": "CRON-UT-033", "category": "equivalence", "expr": "0 0 * * 5-5/0", "valid": false},
 {"id": "CRON-UT-041", "category": "equivalence", "expr": "0 0 32 * *", "valid": false},
+{"id": "CRON-UT-045", "category": "equivalence", "check": "match", "expr": "0 0 * * *", "start": "2024-01-01T00:00:00+00:00", "expected": true},
+{"id": "CRON-UT-046", "category": "equivalence", "check": "match", "expr": "0 0 * * *", "start": "2024-01-01T00:01:00+00:00", "expected": false},
+{"id": "CRON-UT-047", "category": "equivalence", "check": "match_range", "expr": "0 0 * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-02T00:00:00+00:00", "expected": true},
+{"id": "CRON-UT-048", "category": "equivalence", "check": "match_range", "expr": "0 1 * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-01T00:30:00+00:00", "expected": false},
+{"id": "CRON-UT-049", "category": "equivalence", "check": "is_valid", "expr": "0 0 0 1 1 *", "second_at_beginning": true, "expected": true},
 {"id": "CRON-UT-013", "category": "boundary", "expr": "* * * * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-01T00:01:00+00:00"},
 {"id": "CRON-UT-014", "category": "boundary", "expr": "0 * * * *", "start": "2024-01-01T00:00:00+00:00", "expected": "2024-01-01T01:00:00+00:00"},
 {"id": "CRON-UT-015", "category": "boundary", "expr": "0 0 1 * *", "start": "2024-01-02T00:00:00+00:00", "expected": "2024-02-01T00:00:00+00:00"},
@@ -34,10 +39,5 @@
 {"id": "CRON-UT-038", "category": "scenario", "expr": "0,10,20,30,40,50 * * * *", "start": "2024-01-15T12:00:00+00:00"},
 {"id": "CRON-UT-039", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-06-30T23:50:00+00:00"},
 {"id": "CRON-UT-040", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-08-01T00:05:00+09:00"},
-{"id": "CRON-UT-045", "category": "match", "check": "match", "expr": "0 0 * * *", "start": "2024-01-01T00:00:00+00:00", "expected": true},
-{"id": "CRON-UT-046", "category": "match", "check": "match", "expr": "0 0 * * *", "start": "2024-01-01T00:01:00+00:00", "expected": false},
-{"id": "CRON-UT-047", "category": "match", "check": "match_range", "expr": "0 0 * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-02T00:00:00+00:00", "expected": true},
-{"id": "CRON-UT-048", "category": "match", "check": "match_range", "expr": "0 1 * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-01T00:30:00+00:00", "expected": false},
-{"id": "CRON-UT-049", "category": "match", "check": "is_valid", "expr": "0 0 0 1 1 *", "second_at_beginning": true, "expected": true},
-{"id": "CRON-UT-050", "category": "match", "check": "range", "expr": "* * * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-01T00:03:00+00:00", "count": 4}
+{"id": "CRON-UT-050", "category": "scenario", "check": "range", "expr": "* * * * *", "start": "2024-01-01T00:00:00+00:00", "end": "2024-01-01T00:03:00+00:00", "count": 4}
 ]

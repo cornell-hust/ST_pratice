@@ -19,11 +19,11 @@
 
 | 用例编号范围 | 测试主题 | 测试文件/函数 | 方法 | 状态 |
 |---|---|---|---|---|
-| CRON-UT-001—011、033、041 | 合法/非法表达式与字段等价类 | `tests/test_croniter.py::test_parser_equivalence` | 等价类、异常 | 已通过 |
+| CRON-UT-001—011、033、041、045—049 | 合法/非法表达式、时刻匹配、时段匹配与合法性等价类 | `tests/test_croniter.py::test_parser_equivalence` | 等价类、异常 | 已通过 |
 | CRON-UT-013—024、034、035、042—044 | 分钟、小时、日期、月份、闰年、月末边界，夏令时与返回值类型 | `tests/test_croniter.py::test_next_boundaries` | 边界值 | 已通过 |
-| CRON-UT-025、037—040 | 连续迭代场景（步长范围、枚举、跨日跨月、时区偏移） | `tests/test_croniter.py::test_scenarios` | 场景法、状态转换 | 已通过 |
+| CRON-UT-025、037—040、050 | 连续迭代场景（步长范围、枚举、跨日跨月、时区偏移、窗口触发序列） | `tests/test_croniter.py::test_scenarios` | 场景法、状态转换 | 已通过 |
 | CRON-UT-033—035 | 三个历史缺陷的修复验证 | 已并入等价类（033）与边界值（034、035）两行；CRON-UT-036 已删除 | 等价类、边界值 | 已通过 |
-| CRON-UT-045—050 | 时刻匹配、时段匹配、范围枚举与合法性专项校验（原 5 个独立测试函数并入） | `tests/test_croniter.py::test_match_and_ranges` | 专项检查 | 已通过 |
+| CRON-UT-045—050 | 原 5 条专项自动化检查 | 已按设计方法并入等价类（045—049）与场景法（050）两行，检查类型由 check 字段承载 | 等价类、场景法 | 已通过 |
 
 ## 缺陷到回归证据
 

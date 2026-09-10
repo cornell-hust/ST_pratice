@@ -13,10 +13,9 @@
 
 | 用例编号 | 测试函数 | 方法 |
 |---|---|---|
-| CRON-UT-001—011、033、041 | `test_parser_equivalence` | 等价类、异常 |
+| CRON-UT-001—011、033、041、045—049 | `test_parser_equivalence` | 等价类、异常（045/046 时刻匹配、047/048 时段匹配、049 合法性校验按 `check` 字段分发） |
 | CRON-UT-013—024、034、035、042—044 | `test_next_boundaries` | 边界值（034/035 带 `expand_from_start_time=True` 用于在基线上暴露历史缺陷；042 返回值类型、043 夏令时、044 非法输入类型） |
-| CRON-UT-025、037—040 | `test_scenarios` | 场景法、状态转换 |
-| CRON-UT-045—050 | `test_match_and_ranges` | match / match_range / croniter_range / is_valid 专项校验（原 5 个独立测试函数已并入账本） |
+| CRON-UT-025、037—040、050 | `test_scenarios` | 场景法、状态转换（050 为窗口触发序列，按 `check` 字段分发） |
 
 标记（`smoke`、`boundary`、`regression`、`scenario`）定义于 `module1/pytest.ini`。
 

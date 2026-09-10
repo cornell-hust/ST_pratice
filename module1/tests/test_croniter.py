@@ -22,12 +22,20 @@ def _cases(category):
 # 四组参数化数据全部来自账本，测试代码不再写死任何一条用例的输入或预期
 EQUIVALENCE = _cases("equivalence")   # 12 条：合法/非法表达式等价类
 BOUNDARY = _cases("boundary")         # 12 条：分钟/小时/日期/闰年/周日等边界值
-SCENARIO = _cases("scenario")         # 5 条：连续迭代场景
-MATCH = _cases("match")               # 6 条：匹配/范围/合法性专项检查（原独立测试函数并入）
+SCENARIO = _cases("scenario")         # 6 条：连续迭代场景（含 050 窗口触发序列）
 
 
 @pytest.mark.parametrize("case", EQUIVALENCE, ids=[c["id"] for c in EQUIVALENCE])
 def test_parser_equivalence(case):
+    if case.get("check") == "match":                  # 时刻匹配：命中/未命中等价类
+        assert croniter.match(case["expr"], _dt(case["start"])) == case["expected"]
+        return
+    if case.get("check") == "match_range":            # 时段匹配：含/不含触发点等价类
+        assert croniter.match_range(case["expr"], _dt(case["start"]), _dt(case["end"])) == case["expected"]
+        return
+    if case.get("check") == "is_valid":               # 表达式合法性：合法表达式类
+        assert croniter.is_valid(case["expr"], second_at_beginning=case.get("second_at_beginning", False)) == case["expected"]
+        return
     start = datetime(2024, 1, 1, tzinfo=timezone.utc)
     if case["valid"]:                                  # 账本说"应该合法"
         assert croniter(case["expr"], start).get_next(datetime)
@@ -57,6 +65,9 @@ def test_next_boundaries(case):
 
 @pytest.mark.parametrize("case", SCENARIO, ids=[c["id"] for c in SCENARIO])
 def test_scenarios(case):
+    if case.get("check") == "range":                      # 场景：窗口内连续触发序列个数
+        assert len(list(croniter_range(_dt(case["start"]), _dt(case["end"]), case["expr"]))) == case["count"]
+        return
     start = _dt(case["start"])
     it = croniter(case["expr"], start)
     a, b = it.get_next(datetime), it.get_next(datetime)   # 连续取两次
@@ -64,14 +75,5 @@ def test_scenarios(case):
     assert croniter(case["expr"], start).get_prev(datetime) < start  # 往回找必须早于起点
 
 
-@pytest.mark.parametrize("case", MATCH, ids=[c["id"] for c in MATCH])
-def test_match_and_ranges(case):
-    """匹配/范围/合法性专项检查（原 5 个独立测试函数已并入账本参数化）"""
-    if case["check"] == "match":                      # 时刻匹配
-        assert croniter.match(case["expr"], _dt(case["start"])) == case["expected"]
-    elif case["check"] == "match_range":              # 时段匹配
-        assert croniter.match_range(case["expr"], _dt(case["start"]), _dt(case["end"])) == case["expected"]
-    elif case["check"] == "range":                    # 窗口内触发点个数
-        assert len(list(croniter_range(_dt(case["start"]), _dt(case["end"]), case["expr"]))) == case["count"]
-    else:                                             # is_valid 合法性校验
-        assert croniter.is_valid(case["expr"], second_at_beginning=case.get("second_at_beginning", False)) == case["expected"]
+# 045—049（时刻/时段匹配、合法性校验的等价类）与 050（窗口触发序列场景）
+# 分别由 test_parser_equivalence 与 test_scenarios 按 check 字段分发，不设独立类别。
