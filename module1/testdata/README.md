@@ -1,20 +1,20 @@
 # testdata/ — 测试数据账本
 
-`cron_cases.json` 是 29 条清单用例（CRON-UT-001—025、033—036；CRON-UT-026—032 为重复用例已去重）的**单一数据源**：用例的表达式、起始时间与预期结果全部记录在此，测试代码不写死任何用例数据（"数据带着代码"，设计动机见 `module1/自动化测试设计与实施说明v2.md`）。
+`cron_cases.json` 是 32 条清单用例（CRON-UT-001—025、033—035、037—040；026—032 重复用例已去重、036 已删除）的**单一数据源**：用例的表达式、起始时间与预期结果全部记录在此，测试代码不写死任何用例数据（"数据带着代码"，设计动机见 `module1/自动化测试设计与实施说明v2.md`）。
 
 ## 字段说明
 
 | 字段 | 含义 | 出现条件 |
 |---|---|---|
 | `id` | 用例编号 `CRON-UT-XXX` | 全部 |
-| `category` | `equivalence` / `boundary` / `scenario` / `regression` | 全部 |
+| `category` | `equivalence` / `boundary` / `scenario`（当前账本无 regression 类） | 全部 |
 | `expr` | cron 表达式 | 全部 |
 | `valid` | `true`=合法表达式应通过；`false`=应抛 `CroniterBadCronError` | equivalence |
-| `start` | 起始时间（ISO 8601） | boundary / scenario / regression |
+| `start` | 起始时间（ISO 8601） | boundary / scenario |
 | `expected` | 单次 `get_next` 的预期时间 | boundary |
-| `expect` | `"raise"` 或 `"sequence"` | regression |
-| `n` | 取前 n 次结果 | sequence 类 |
-| `expected`（数组） | 完整预期序列 | sequence 类 |
+| `expect` | `"raise"` 或 `"sequence"` | regression（当前账本无该类用例，字段暂不出现） |
+| `n` | 取前 n 次结果 | sequence 类（仅 regression） |
+| `expected`（数组） | 完整预期序列 | sequence 类（仅 regression） |
 
 ## 修改规则
 

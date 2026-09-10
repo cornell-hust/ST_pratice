@@ -13,10 +13,10 @@
 
 | 用例编号 | 测试函数 | 方法 |
 |---|---|---|
-| CRON-UT-001—012 | `test_parser_equivalence` | 等价类、异常 |
-| CRON-UT-013—024 | `test_next_boundaries` | 边界值 |
-| CRON-UT-025（原 025—032 为重复用例已去重） | `test_scenarios` | 场景法、状态转换 |
-| CRON-UT-033—036 | `test_regressions` | 回归（带 `@pytest.mark.regression`） |
+| CRON-UT-001—012、033 | `test_parser_equivalence` | 等价类、异常 |
+| CRON-UT-013—024、034、035 | `test_next_boundaries` | 边界值 |
+| CRON-UT-025、037—040 | `test_scenarios` | 场景法、状态转换 |
+| （无参数化用例） | `test_regressions` | 原 033—036 回归段已重组：033→等价类、034/035→边界值、036 已删除，函数现被跳过 |
 
 标记（`smoke`、`boundary`、`regression`、`scenario`）定义于 `module1/pytest.ini`。
 
@@ -26,12 +26,12 @@
 
 ```bash
 .venv/Scripts/python.exe -m pytest -q                         # 全量
-.venv/Scripts/python.exe -m pytest -q -m regression           # 仅历史缺陷回归
+# 注：-m regression 标记当前已无参数化用例（033—035 已归入等价类/边界值）
 .venv/Scripts/python.exe -m coverage run --branch -m pytest -q
 .venv/Scripts/python.exe -m coverage report -m
 ```
 
-当前结果：34 passed；branch coverage 56%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
+当前结果：37 passed（另有 1 skipped）；branch coverage 55%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
 
 ## 新增用例的步骤
 
