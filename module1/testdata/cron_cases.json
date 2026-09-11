@@ -34,6 +34,8 @@
 {"id": "CRON-UT-042", "category": "boundary", "expr": "*/30 * * * * *", "start": "2024-01-01T00:00:00+00:00", "ret_type": "float"},
 {"id": "CRON-UT-043", "category": "boundary", "expr": "0 2 * * *", "start": "2024-03-09T00:00:00-05:00", "tz": "America/New_York", "expected": "2024-03-09T02:00:00-05:00"},
 {"id": "CRON-UT-044", "category": "boundary", "expr": "* * * * *", "start": "object"},
+{"id": "CRON-UT-051", "category": "boundary", "expr": "0 2 * * *", "start": "2024-03-10T00:00:00-05:00", "tz": "America/New_York", "expected": "2024-03-10T03:00:00-04:00"},
+{"id": "CRON-UT-052", "category": "boundary", "expr": "0 1 * * *", "start": "2024-11-03T00:00:00-04:00", "tz": "America/New_York", "expected": "2024-11-03T01:00:00-04:00"},
 {"id": "CRON-UT-025", "category": "scenario", "expr": "*/10 * * * *", "start": "2024-01-15T12:00:00+00:00"},
 {"id": "CRON-UT-037", "category": "scenario", "expr": "5-59/10 * * * *", "start": "2024-01-15T12:00:00+00:00"},
 {"id": "CRON-UT-038", "category": "scenario", "expr": "0,10,20,30,40,50 * * * *", "start": "2024-01-15T12:00:00+00:00"},

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 # 从"账本"（testdata/cron_cases.json）读取全部用例数据：
-# 每条用例自带 id、category，以及该用例需要的输入（expr/start）和预期（valid/expected/expect）。
+# 每条用例自带 id、category（设计方法），以及该用例需要的输入（expr/start）和预期（valid/expected）。
 CASES = json.loads((Path(__file__).parents[1] / "testdata" / "cron_cases.json").read_text())
 
 
@@ -19,9 +19,9 @@ def _cases(category):
     return [c for c in CASES if c["category"] == category]
 
 
-# 四组参数化数据全部来自账本，测试代码不再写死任何一条用例的输入或预期
-EQUIVALENCE = _cases("equivalence")   # 12 条：合法/非法表达式等价类
-BOUNDARY = _cases("boundary")         # 12 条：分钟/小时/日期/闰年/周日等边界值
+# 三组参数化数据全部来自账本，测试代码不再写死任何一条用例的输入或预期
+EQUIVALENCE = _cases("equivalence")   # 18 条：合法/非法表达式、时刻/时段匹配、合法性等价类
+BOUNDARY = _cases("boundary")         # 17 条：分钟/小时/日期/闰年/周日/夏令时等边界值
 SCENARIO = _cases("scenario")         # 6 条：连续迭代场景（含 050 窗口触发序列）
 
 
@@ -60,7 +60,10 @@ def test_next_boundaries(case):
     expected = _dt(case["expected"])                   # 预期结果来自账本
     # 034/035 等月份/周日低界用例需按起点展开步进，才能在修复前基线版本上暴露对应历史缺陷
     expand = case.get("expand", False)
-    assert croniter(case["expr"], start, expand_from_start_time=expand).get_next(datetime) == expected
+    actual = croniter(case["expr"], start, expand_from_start_time=expand).get_next(datetime)
+    # 统一换算到 UTC 再比较：秋令时回拨日的本地时刻是"歧义时刻"（同一钟点出现两次），
+    # Python 对歧义 datetime 的 == 比较恒为 False；先归一化到 UTC 可稳定比较瞬时点
+    assert actual.astimezone(timezone.utc) == expected.astimezone(timezone.utc)
 
 
 @pytest.mark.parametrize("case", SCENARIO, ids=[c["id"] for c in SCENARIO])
