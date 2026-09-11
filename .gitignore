@@ -8,8 +8,6 @@ __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
-.coverage
-htmlcov/
 
 # Office 临时锁文件
 ~$*

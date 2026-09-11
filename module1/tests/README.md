@@ -25,17 +25,15 @@
 
 ```bash
 .venv/Scripts/python.exe -m pytest -q                         # 全量
-.venv/Scripts/python.exe -m coverage run --branch -m pytest -q
-.venv/Scripts/python.exe -m coverage report -m
 ```
 
-当前结果：40 passed；branch coverage 57%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
+当前结果：40 passed（详见 `module1/README.md` 与 `requirements_traceability.md`）。
 
 ## 新增用例的步骤
 
 1. 在 `testdata/cron_cases.json` 添加记录（编号按 `CRON-UT-XXX` 连续，不重号）；
 2. 确认该记录 `category` 对应的参数化函数，或新增测试函数；
 3. 在 `requirements_traceability.md` 登记函数名与编号范围；
-4. 运行全量测试，同步更新覆盖率数字与附录一清单。
+4. 运行全量测试，同步更新附录一清单与 `requirements_traceability.md`。
 
 测试不得依赖网络、数据库或外部服务。

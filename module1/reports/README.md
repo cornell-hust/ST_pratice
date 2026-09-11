@@ -6,7 +6,7 @@
 
 相关文档：
 
-- `requirements_traceability.md`：报告中用例数、覆盖率、缺陷数字的来源；
+- `requirements_traceability.md`：报告中用例数、缺陷数字的来源；
 - 根目录《附录3：测试报告模板（模块一）.docx》：课程提供的报告模板。
 
 存放约定：
