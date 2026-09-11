@@ -7,14 +7,14 @@
 | 文件 | 作用 |
 |---|---|
 | `conftest.py` | 路径注入；不定义公共 fixture（用例数据由 testdata 账本提供） |
-| `test_croniter.py` | 43 条账本参数化用例（原 5 条专项自动化检查已并入账本） |
+| `test_croniter.py` | 40 条账本参数化用例（原 5 条专项自动化检查已并入账本） |
 
 ## 用例段与测试函数映射
 
 | 用例编号 | 测试函数 | 方法 |
 |---|---|---|
-| CRON-UT-001—011、033、041、045—049 | `test_parser_equivalence` | 等价类、异常（045/046 时刻匹配、047/048 时段匹配、049 合法性校验按 `check` 字段分发） |
-| CRON-UT-013—024、034、035、042—044、051、052 | `test_next_boundaries` | 边界值（034/035 带 `expand_from_start_time=True` 用于在基线上暴露历史缺陷；042 返回值类型、043 普通日夏令时时区、044 非法输入类型、051 春季跳变日、052 秋季回拨日） |
+| CRON-UT-001—011、033、045—049 | `test_parser_equivalence` | 等价类、异常（045/046 时刻匹配、047/048 时段匹配、049 合法性校验按 `check` 字段分发） |
+| CRON-UT-013—022、024、034、035、042—044、051、052 | `test_next_boundaries` | 边界值（034/035 带 `expand_from_start_time=True` 用于在基线上暴露历史缺陷；042 返回值类型、043 普通日夏令时时区、044 非法输入类型、051 春季跳变日、052 秋季回拨日） |
 | CRON-UT-025、037—040、050 | `test_scenarios` | 场景法、状态转换（050 为窗口触发序列，按 `check` 字段分发） |
 
 标记（`smoke`、`boundary`、`scenario`）定义于 `module1/pytest.ini`。
@@ -29,7 +29,7 @@
 .venv/Scripts/python.exe -m coverage report -m
 ```
 
-当前结果：43 passed；branch coverage 57%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
+当前结果：40 passed；branch coverage 57%（详见 `module1/README.md` 与 `requirements_traceability.md`）。
 
 ## 新增用例的步骤
 
