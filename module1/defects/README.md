@@ -9,6 +9,6 @@
 
 缺陷与回归用例对应关系：CRON-D-001→CRON-UT-033，CRON-D-002→CRON-UT-034，CRON-D-003→CRON-UT-035（详见 `requirements_traceability.md`）。
 
-> 归属说明：`module1/bug1.md`、`bug2.md`、`bug3.md` 是对应三个缺陷的通俗讲解，逻辑上属于本目录，当前位于 module1 根目录，待小组确认后迁移（见 `docs/项目结构说明.md` 第 7 节 A2）。
+> 归属说明：原 `module1/bug1.md`、`bug2.md`、`bug3.md`（三个缺陷的通俗讲解）已于 2026-09-11 清理——其内容与本目录的 `croniter-history.md`、`附录2-缺陷报告.docx` 重复；备份见仓库外的 `ST_pratice_已删除文件备份_20260911.zip`。
 
 新增缺陷证据的存放约定：证据文件（复现输出、日志）放本目录，文件名以缺陷编号开头（如 `CRON-D-004-repro.txt`）；没有复现输出的缺陷不得标记为"已关闭"。
