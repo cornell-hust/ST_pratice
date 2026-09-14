@@ -20,7 +20,7 @@ def _cases(category):
 
 
 # 三组参数化数据全部来自账本，测试代码不再写死任何一条用例的输入或预期
-EQUIVALENCE = _cases("equivalence")   # 18 条：合法/非法表达式、时刻/时段匹配、合法性等价类
+EQUIVALENCE = _cases("equivalence")   # 17 条：合法/非法表达式、时刻/时段匹配、合法性等价类
 BOUNDARY = _cases("boundary")         # 17 条：分钟/小时/日期/闰年/周日/夏令时等边界值
 SCENARIO = _cases("scenario")         # 6 条：连续迭代场景（含 050 窗口触发序列）
 
