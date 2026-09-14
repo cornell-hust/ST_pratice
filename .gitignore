@@ -12,8 +12,9 @@ __pycache__/
 # Office 临时锁文件
 ~$*
 
-# Node 依赖（presentation 构建用）
-# 注意：module1/presentation/build/node_modules 已被 git 跟踪，
-# 忽略规则对已跟踪文件不生效，取消跟踪需小组确认后执行
-# git rm -r --cached module1/presentation/build/node_modules
+# Node 依赖
 node_modules/
+
+# 本地临时文件（不入库）
+手动提交命令.md
+.git.backup-*/
