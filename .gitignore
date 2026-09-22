@@ -18,3 +18,4 @@ node_modules/
 # 本地临时文件（不入库）
 手动提交命令.md
 .git.backup-*/
+module2/.api-key

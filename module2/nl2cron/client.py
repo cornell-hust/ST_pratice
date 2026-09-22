@@ -10,9 +10,13 @@ import json
 import os
 import urllib.error
 import urllib.request
+from pathlib import Path
 
 DEFAULT_BASE_URL = "https://open.bigmodel.cn/api/paas/v4"
 DEFAULT_MODEL = "glm-4-flash"
+
+# 备选密钥文件：不进 Git（.gitignore 已覆盖），避免密钥进入对话与提交历史
+KEY_FILE = Path(__file__).resolve().parent.parent / ".api-key"
 
 
 class LLMError(RuntimeError):
@@ -23,13 +27,22 @@ def current_model() -> str:
     return os.environ.get("NL2CRON_MODEL", DEFAULT_MODEL)
 
 
+def _api_key() -> str | None:
+    key = os.environ.get("NL2CRON_API_KEY")
+    if key:
+        return key.strip()
+    if KEY_FILE.exists():
+        return KEY_FILE.read_text(encoding="utf-8").strip() or None
+    return None
+
+
 def chat_completion(messages, *, temperature=0.0, timeout=60):
     """发起一次 chat/completions 调用，返回助手回复文本。"""
-    api_key = os.environ.get("NL2CRON_API_KEY")
+    api_key = _api_key()
     if not api_key:
         raise LLMError(
-            "缺少环境变量 NL2CRON_API_KEY。回放模式不需要它；"
-            "录制（LIVE=1）前请先配置 API Key。"
+            "缺少 API Key：请设置环境变量 NL2CRON_API_KEY，或把密钥写入 "
+            "module2/.api-key 文件（已 gitignore）。回放模式不需要密钥。"
         )
     base_url = os.environ.get("NL2CRON_BASE_URL", DEFAULT_BASE_URL).rstrip("/")
     model = current_model()

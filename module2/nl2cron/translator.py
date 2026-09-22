@@ -38,6 +38,8 @@ def _parse(content: str):
         data = json.loads(match.group(0))
     except json.JSONDecodeError as exc:
         return None, "", f"JSON 解析失败: {exc}"
+    if not isinstance(data, dict):
+        return None, "", "JSON 不是对象"
     cron = data.get("cron")
     if isinstance(cron, str):
         cron = cron.strip() or None
