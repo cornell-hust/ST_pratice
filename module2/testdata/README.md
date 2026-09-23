@@ -1,9 +1,15 @@
 # testdata/ — 用例账本与录制回放缓存
 
+> **入库说明**：入库的是 `nl2cron_cases.json` 与 `recordings/`（回放必需）；`execution_*`
+> 不入库，可由入库的 `tools/summarize.py` 一键重新生成。入库范围见
+> [`module2/README.md`](../README.md) 的「入库范围」一节。
+
 | 文件/目录 | 作用 |
 | --- | --- |
-| `nl2cron_cases.json` | **用例单一数据源（账本）**：36 条用例的输入、参考表达式、时间窗、维度与方法标注 |
-| `recordings/` | LLM 响应录制缓存：`<sha256>.json` 一文件一次调用，`index.jsonl` 为人读索引 |
+| `nl2cron_cases.json` | **用例单一数据源（账本）**：40 条用例的输入、参考表达式、时间窗、维度与方法标注 |
+| `recordings/` | LLM 响应录制缓存：`<sha256>.json` 一文件一次调用（160 条），`index.jsonl` 为人读索引 |
+| `execution_summary.json` / `execution_report.md` | `summarize.py` 生成的执行汇总（v2 修复后：40/40 通过） |
+| `execution_summary.v1.json` / `execution_report.v1.md` | v1 基线的执行汇总留档（32/40 通过，缺陷复现证据） |
 
 ## 约定
 
