@@ -1,0 +1,8 @@
+{
+  "key": "0560d21f3df67aa37c38095a",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每天９点提醒我喝水",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天上午9点执行，提醒你喝水。\"}"
+}

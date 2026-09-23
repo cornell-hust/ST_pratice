@@ -1,0 +1,8 @@
+{
+  "key": "8ace238c555175d3f67cf31d",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "只在双休日早上 10 点执行一次数据归档",
+  "run": 0,
+  "content": "{\"cron\": \"0 10 * * 0,6\", \"explanation\": \"每周六和周日的早上 10:00 执行一次数据归档。\"}"
+}

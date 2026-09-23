@@ -1,0 +1,8 @@
+{
+  "key": "c8284824c3422972e2616ada",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "工作日每天早上 9 点执行一次数据同步",
+  "run": 2,
+  "content": "{\"cron\": \"0 9 * * 1-5\", \"explanation\": \"每周一到周五（工作日）上午 9 点整执行一次数据同步。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "a1c6e6dd4ca3caddcc44409f",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每天 8 点、12 点、18 点整各同步一次数据",
+  "run": 0,
+  "content": "{\"cron\": \"0 8,12,18 * * *\", \"explanation\": \"每天 8:00、12:00、18:00 整各同步一次。\"}"
+}

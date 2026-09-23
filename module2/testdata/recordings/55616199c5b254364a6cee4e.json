@@ -1,0 +1,8 @@
+{
+  "key": "55616199c5b254364a6cee4e",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每周弎九点开会",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * 3\", \"explanation\": \"每周三上午9点触发\"}"
+}

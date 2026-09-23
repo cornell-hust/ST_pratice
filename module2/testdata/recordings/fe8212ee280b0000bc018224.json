@@ -1,0 +1,8 @@
+{
+  "key": "fe8212ee280b0000bc018224",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "按纽约时间每天早上 9 点推送日报",
+  "run": 1,
+  "content": "{\"cron\": \"CRON_TZ=America/New_York 0 9 * * *\", \"explanation\": \"按纽约时区每天上午 9:00 执行一次，用于推送日报。\"}"
+}

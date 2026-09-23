@@ -1,0 +1,8 @@
+{
+  "key": "83edfc8a7335c0251bc52bc9",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每两天中午 12 点执行一次",
+  "run": 0,
+  "content": "{\"cron\": \"0 12 */2 * *\", \"explanation\": \"每两天中午12:00执行一次。\"}"
+}

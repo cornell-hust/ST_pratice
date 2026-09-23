@@ -1,0 +1,8 @@
+{
+  "key": "c175febe36c294874c1eecdf",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "美国东部时间每天早上 9 点",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天 9:00 触发；因美国东部时间有夏令时切换，需将执行时区设为 America/New_York（或使用 CRON_TZ=America/New_York），否则纯 UTC 环境下在冬夏两季会偏差一小时。\"}"
+}

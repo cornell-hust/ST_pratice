@@ -1,0 +1,8 @@
+{
+  "key": "d2b6d435e9c61f554d7ea0e3",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每周弎九点开会",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * 3\", \"explanation\": \"每周三9点0分开会，即每周三上午9点执行。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "ad396420539e81aba40e8514",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "美国东部时间每天早上 9 点",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天 9:00 执行，但 crontab 无法表达时区，需将服务器时区设为美国东部时间才能对应东部时间早 9 点。\"}"
+}

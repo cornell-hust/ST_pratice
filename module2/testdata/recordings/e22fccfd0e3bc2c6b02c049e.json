@@ -1,0 +1,8 @@
+{
+  "key": "e22fccfd0e3bc2c6b02c049e",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每天 9 点到 18 点之间每小时整点执行一次巡检",
+  "run": 2,
+  "content": "{\"cron\": \"0 9-18 * * *\", \"explanation\": \"每天 9 点至 18 点之间每个整点执行一次巡检。\"}"
+}

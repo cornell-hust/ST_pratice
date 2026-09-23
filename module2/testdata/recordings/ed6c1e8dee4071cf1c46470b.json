@@ -1,0 +1,8 @@
+{
+  "key": "ed6c1e8dee4071cf1c46470b",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每天早上 8 点跑一次数据备份",
+  "run": 0,
+  "content": "{\"cron\": \"0 8 * * *\", \"explanation\": \"每天早上 8 点整执行一次数据备份。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "d50fb8b81d935675c2810756",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每 30 分钟执行一次健康检查",
+  "run": 0,
+  "content": "{\"cron\": \"*/30 * * * *\", \"explanation\": \"每 30 分钟执行一次健康检查。\"}"
+}

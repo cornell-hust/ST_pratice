@@ -1,0 +1,8 @@
+{
+  "key": "25c0300c2b24ea92c0d5ab66",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每月三号十点",
+  "run": 2,
+  "content": "{\"cron\":\"0 10 3 * *\",\"explanation\":\"每月3号10:00执行\"}"
+}

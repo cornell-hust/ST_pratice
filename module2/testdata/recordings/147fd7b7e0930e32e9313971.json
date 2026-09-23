@@ -1,0 +1,8 @@
+{
+  "key": "147fd7b7e0930e32e9313971",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每小时整点运行一次任务",
+  "run": 1,
+  "content": "{\"cron\": \"0 * * * *\", \"explanation\": \"每小时的第 0 分钟执行一次，即每个整点运行。\"}"
+}

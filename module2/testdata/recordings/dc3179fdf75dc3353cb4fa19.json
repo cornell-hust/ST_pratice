@@ -1,0 +1,8 @@
+{
+  "key": "dc3179fdf75dc3353cb4fa19",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每逢周六和周日中午 12 点刷新一次缓存",
+  "run": 0,
+  "content": "{\"cron\": \"0 12 * * 6,0\", \"explanation\": \"每周六和周日中午12点整各执行一次缓存刷新。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "7e717d3d12015000b57fddd9",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每天七点半左右跑一下巡检",
+  "run": 0,
+  "content": "{\"cron\": \"30 7 * * *\", \"explanation\": \"每天 7:30 执行一次巡检任务。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "25ddb1cbad177e5dcd9ee465",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "今天天气怎么样？",
+  "run": 0,
+  "content": "{\"cron\": \"\", \"explanation\": \"这不是定时任务描述，无法转换为 cron 表达式，请提供需要定时执行的任务。\"}"
+}

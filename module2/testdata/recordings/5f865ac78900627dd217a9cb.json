@@ -1,0 +1,8 @@
+{
+  "key": "5f865ac78900627dd217a9cb",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "",
+  "run": 0,
+  "content": "{\"cron\": null, \"explanation\": \"未收到任何定时任务描述，无法生成 cron 表达式。\"}"
+}

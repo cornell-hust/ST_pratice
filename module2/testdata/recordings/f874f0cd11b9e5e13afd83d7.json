@@ -1,0 +1,8 @@
+{
+  "key": "f874f0cd11b9e5e13afd83d7",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "每个季度首月的 1 号零点生成一次季度报表",
+  "run": 2,
+  "content": "{\"cron\": \"0 0 1 1,4,7,10 *\", \"explanation\": \"每年 1、4、7、10 月的 1 号零点执行一次，即每个季度首月 1 号生成季度报表。\"}"
+}

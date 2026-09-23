@@ -1,0 +1,8 @@
+{
+  "key": "28e80a65caa9ddbbd0cd588d",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每 15 分钟执行一次数据备份",
+  "run": 1,
+  "content": "{\"cron\": \"*/15 * * * *\", \"explanation\": \"每 15 分钟执行一次，即所有小时的 0、15、30、45 分钟各触发一次数据备份。\"}"
+}

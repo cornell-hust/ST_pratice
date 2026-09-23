@@ -1,0 +1,8 @@
+{
+  "key": "ad5aa50485fc296d759f222b",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每 15 分钟执行一次数据备份",
+  "run": 0,
+  "content": "{\"cron\": \"*/15 * * * *\", \"explanation\": \"每 15 分钟执行一次数据备份，对应分字段为 */15，其余字段不限。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "39ffabb63650263b956092af",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每周一早上九点",
+  "run": 2,
+  "content": "{\"cron\": \"0 9 * * 1\", \"explanation\": \"每周一早上 9 点执行，即分 0、时 9、周 1。\"}"
+}

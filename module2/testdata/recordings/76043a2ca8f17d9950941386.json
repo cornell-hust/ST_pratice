@@ -1,0 +1,8 @@
+{
+  "key": "76043a2ca8f17d9950941386",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "纽约时间每天 9 点",
+  "run": 2,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天 9 点执行；cron 不支持时区字段，需将调度系统时区设为 America/New_York（纽约时间）以确保准点。\"}"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "7f02b0a81a1cba4e73c41c59",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "every day 早上9点同步一次",
+  "run": 0,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天上午9点整执行一次同步任务。\"}"
+}

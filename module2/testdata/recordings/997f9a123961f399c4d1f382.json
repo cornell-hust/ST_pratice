@@ -1,0 +1,8 @@
+{
+  "key": "997f9a123961f399c4d1f382",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每周一早上 9 点提醒开周会",
+  "run": 1,
+  "content": "{\"cron\": \"0 9 * * 1\", \"explanation\": \"每周一早上9点执行，对应分0、时9、周1。\"}"
+}

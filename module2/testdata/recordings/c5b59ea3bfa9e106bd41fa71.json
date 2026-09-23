@@ -1,0 +1,8 @@
+{
+  "key": "c5b59ea3bfa9e106bd41fa71",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "按纽约时间每天早上 9 点推送日报",
+  "run": 1,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天 9:00 执行；5 字段 cron 不支持时区，需将服务器时区设为 America/New_York 才能对应纽约时间早上 9 点。\"}"
+}

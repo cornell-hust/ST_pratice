@@ -1,0 +1,8 @@
+{
+  "key": "0ae4237c13189bde236ab2c5",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "今天天气怎么样？",
+  "run": 0,
+  "content": "{\"cron\": null, \"explanation\": \"输入内容为天气询问，与定时任务无关，无法生成 cron 表达式。\"}"
+}

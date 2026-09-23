@@ -1,0 +1,8 @@
+{
+  "key": "856e073b767e249d44d97ef8",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每逢周六和周日中午 12 点刷新一次缓存",
+  "run": 2,
+  "content": "{\"cron\": \"0 12 * * 0,6\", \"explanation\": \"每周六和周日中午12点执行，即周六(6)和周日(0)的12时0分。\"}"
+}

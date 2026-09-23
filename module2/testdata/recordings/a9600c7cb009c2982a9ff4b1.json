@@ -1,0 +1,8 @@
+{
+  "key": "a9600c7cb009c2982a9ff4b1",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "美国东部时间每天早上 9 点",
+  "run": 1,
+  "content": "{\"cron\": \"0 9 * * *\", \"explanation\": \"每天上午 9 点执行，表达式按服务器本地时区解释；若服务器不在美国东部时区，需先将 9 点换算为对应本地时间。\"}"
+}

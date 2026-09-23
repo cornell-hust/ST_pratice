@@ -1,0 +1,8 @@
+{
+  "key": "527a4f78fea07b088ae466a2",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每月三号十点",
+  "run": 2,
+  "content": "{\"cron\": \"0 10 3 * *\", \"explanation\": \"每月3日10点0分执行一次。\"}"
+}

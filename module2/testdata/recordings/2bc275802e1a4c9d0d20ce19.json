@@ -1,0 +1,8 @@
+{
+  "key": "2bc275802e1a4c9d0d20ce19",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "仅工作日晚上 22 点执行一次日志清理",
+  "run": 0,
+  "content": "{\"cron\": \"0 22 * * 1-5\", \"explanation\": \"每周一至周五（工作日）晚上 22:00 整执行一次日志清理。\"}"
+}

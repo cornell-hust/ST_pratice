@@ -1,0 +1,8 @@
+{
+  "key": "6bf66037edb5b25ece10efa4",
+  "prompt_version": "v2",
+  "model": "deepseek-flash",
+  "input": "每月 1 号零点执行一次月度归档，另外每周一零点也执行一次",
+  "run": 1,
+  "content": "{\"cron\": \"0 0 1 * 1\", \"explanation\": \"每月 1 号零点与每周一零点各执行一次（日字段为 1、周字段为 1，标准 crontab 中两者同时限定时按“或”匹配）。\"}"
+}

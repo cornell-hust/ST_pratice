@@ -1,0 +1,8 @@
+{
+  "key": "38b8da4b1fdcebc7b1a32ce4",
+  "prompt_version": "v1",
+  "model": "deepseek-flash",
+  "input": "纽约时间每天 9 点",
+  "run": 0,
+  "content": "{\"cron\": \"TZ=America/New_York 0 9 * * *\", \"explanation\": \"每天纽约时间上午 9:00 执行，时区随夏令时/冬令时自动调整。\"}"
+}
