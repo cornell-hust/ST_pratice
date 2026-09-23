@@ -7,6 +7,10 @@
 产出：
 - testdata/execution_summary.json：逐用例结果（gen_case_list.py 用它回填清单）
 - testdata/execution_report.md：按维度统计的执行报告（测试报告/PPT 数字来源）
+
+两个文件按提示词版本自动命名，v1/v2 各存一份、互不覆盖（规则见 ARTIFACT_SUFFIX）：
+v2（交付版本）写主文件名，v1（基线留档）加 `.v1` 后缀。因此复现基线对照只需依次跑
+`NL2CRON_PROMPT_VERSION=v1 python tools/summarize.py` 与 `...=v2 ...`，无需手工改名。
 """
 
 import json
@@ -36,6 +40,11 @@ DIMENSION_NAMES = {
     "fairness": "公平性（FAIR）",
 }
 
+# 输出文件名规则：v2 是交付版本，写主文件名（execution_summary.json / execution_report.md）；
+# v1 是基线留档，加版本后缀（*.v1.json / *.v1.md）。这样 v1/v2 两次运行互不覆盖，
+# 可任意顺序执行，无需事后再手工改名。
+ARTIFACT_SUFFIX = {"v1": ".v1"}
+
 
 def short(result) -> str:
     cron = result.cron if result.cron is not None else "null"
@@ -43,10 +52,15 @@ def short(result) -> str:
 
 
 def evaluate_case(case):
-    """返回 (status, detail, results)；复用 tests/checks.py 的断言逻辑。"""
+    """返回 (status, detail, results)；复用 tests/checks.py 的断言逻辑。
+
+    check_reference 按 n_runs 采样、返回结果列表；check_graceful / check_safe
+    只跑一次、直接返回单个 TranslateResult。这里统一成列表处理。
+    """
     try:
-        results = CHECKS[case["expect"]](case)
-        return "OK", short(results[0] if len(results) == 1 else results[-1]), results
+        outcome = CHECKS[case["expect"]](case)
+        results = outcome if isinstance(outcome, list) else [outcome]
+        return "OK", short(results[-1]), results
     except AssertionError as exc:
         return "FAIL", str(exc)[:300], []
 
@@ -82,7 +96,8 @@ def main() -> int:
         if status == "FAIL":
             failures.append(case["id"])
 
-    (MODULE2_ROOT / "testdata" / "execution_summary.json").write_text(
+    suffix = ARTIFACT_SUFFIX.get(version, "")
+    (MODULE2_ROOT / "testdata" / f"execution_summary{suffix}.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
@@ -103,7 +118,7 @@ def main() -> int:
     if failures:
         lines += ["", "## 失败用例", ""]
         lines += [f"- `{case_id}`：{summary['cases'][case_id]['result']}" for case_id in failures]
-    (MODULE2_ROOT / "testdata" / "execution_report.md").write_text(
+    (MODULE2_ROOT / "testdata" / f"execution_report{suffix}.md").write_text(
         "\n".join(lines) + "\n", encoding="utf-8"
     )
 

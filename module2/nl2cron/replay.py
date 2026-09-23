@@ -52,7 +52,11 @@ def replay(key: str) -> str:
     path = RECORDINGS_DIR / f"{key}.json"
     if not path.exists():
         raise FileNotFoundError(
-            f"回放缓存缺失：{path.name}。请先配置 NL2CRON_API_KEY 后执行 "
-            "LIVE=1 python tools/record_responses.py 生成录制，再运行测试。"
+            f"回放缓存缺失：{path.name}。最常见原因：没有设置 NL2CRON_MODEL"
+            "——缓存键含模型名，录制缓存由 deepseek-flash 生成，未设置会全部未命中。"
+            "请先按 README「环境与运行」一节运行："
+            "NL2CRON_MODEL=deepseek-flash NL2CRON_PROMPT_VERSION=v2 python -m pytest -q。"
+            "若确需重新录制：在含本地工具脚本的工作目录下配置 NL2CRON_API_KEY，执行 "
+            "LIVE=1 python tools/record_responses.py（tools/ 不入库）。"
         )
     return json.loads(path.read_text(encoding="utf-8"))["content"]

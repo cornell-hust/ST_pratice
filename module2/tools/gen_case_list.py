@@ -66,6 +66,9 @@ def main() -> int:
     summary = {}
     if SUMMARY.exists():
         summary = json.loads(SUMMARY.read_text(encoding="utf-8"))
+    # execution_summary.json 的结构是 {"meta": …, "cases": {用例ID: …}}，
+    # 逐用例结果在 "cases" 下面（此前直接按用例 ID 取值，结果列一直是空的）。
+    case_results = summary.get("cases", {})
 
     for index, case in enumerate(cases, start=2):
         row = [
@@ -79,8 +82,8 @@ def main() -> int:
             case["input"],
             procedure(case),
             expected(case),
-            summary.get(case["id"], {}).get("result", ""),
-            summary.get(case["id"], {}).get("status", ""),
+            case_results.get(case["id"], {}).get("result", ""),
+            case_results.get(case["id"], {}).get("status", ""),
             case.get("note", ""),
         ]
         for column, value in enumerate(row, start=1):
@@ -88,8 +91,9 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     workbook.save(OUT)
+    filled = sum(1 for case in cases if case_results.get(case["id"], {}).get("status"))
     print(f"已生成 {OUT.name}：{len(cases)} 条用例"
-          + ("（含执行结果）" if summary else "（执行结果列待回填）"))
+          + (f"（已回填 {filled} 条执行结果）" if filled else "（执行结果列待回填）"))
     return 0
 
 
